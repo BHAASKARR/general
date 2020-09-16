@@ -1,0 +1,45 @@
+1. Install Nagios core on on-prem using following links:
+		https://assets.nagios.com/downloads/nagioscore/docs/Nagios-Core-Installing-On-Centos7.pdf
+		https://www.linuxtechi.com/install-configure-nagios-core-centos7-rhel7/
+		
+		https://www.nagios.org/downloads/nagios-core/thanks/
+		https://www.nagios.org/downloads/nagios-plugins/
+		
+  # to check current users
+	$ cut -d: -f1 /etc/passwd
+  
+	$ cd /opt/
+	$ mkdir nagios_install/
+	$ cd nagios_install/
+	$ wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.4.6.tar.gz
+	$ wget http://www.nagios-plugins.org/download/nagios-plugins-2.3.3.tar.gz
+	
+2. Not able to access UI page:
+	$ systemctl enable nagios
+	$ systemctl enable httpd
+	$ firewall-cmd --zone=public --add-port=80/tcp --permanent 
+	$ firewall-cmd --reload 
+	Able to sign to Nagios web page
+	
+3. Internal server error upon login to web page
+	Internal Server Error
+	The server encountered an internal error or misconfiguration and was unable to complete your request.
+	Please contact the server administrator at root@localhost to inform them of the time this error occurred, and the actions you performed just before this error.
+	More information about this error may be available in the server error log.
+	
+	From <http://nagios_ip/nagios/> 
+	
+	Solution:
+		check error log : $ less /var/log/httpd/error_log
+		check nagios log: $ less /usr/local/nagios/var/nagios.log
+		Conf file : $ vi /etc/httpd/conf.d/nagios.conf
+		
+		[Tue Sep 15 15:18:09.906990 2020] [authn_file:error] [pid 46718] (13)Permission denied: [client x.x.x.x:xxxx] AH01620: Could not open password file: /usr/local/nagios/etc/htpasswd.users
+		
+		Use : $ chmod u+r /usr/local/nagios/etc/htpasswd.users
+		[root@onprem nagios-plugins-2.3.3]# ls -la /usr/local/nagios/etc/htpasswd.users
+		-rw-------. 1 root root 46 Sep 15 18:44 /usr/local/nagios/etc/htpasswd.users
+		[root@onprem nagios-plugins-2.3.3]# chmod o+r /usr/local/nagios/etc/htpasswd.users
+		[root@onprem nagios-plugins-2.3.3]# ls -la /usr/local/nagios/etc/htpasswd.users
+		-rw----r--. 1 root root 46 Sep 15 18:44 /usr/local/nagios/etc/htpasswd.users
+
