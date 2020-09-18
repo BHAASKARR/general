@@ -43,3 +43,19 @@
 		[root@onprem nagios-plugins-2.3.3]# ls -la /usr/local/nagios/etc/htpasswd.users
 		-rw----r--. 1 root root 46 Sep 15 18:44 /usr/local/nagios/etc/htpasswd.users
 
+
+ 4. upgrade/backup Nagios core:
+	1. Stop Nagios
+	2. Backup your existing Nagios installation
+		Configuration files
+			Main config file (usually nagios.cfg)
+			Resource config file (usually resource.cfg)
+			CGI config file (usually cgi.cfg)
+			All your object definition files (/usr/local/nagios/etc/objects)
+		Retention file (usually retention.dat)
+		Current Nagios log file (usually nagios.log)
+		Archived Nagios log files
+	3. Uninstall the original RPM or APT package
+	4. Install Nagios from source by following the quickstart guide
+	5. Restore your original Nagios configuration files, retention file, and log files
+	6. Verify your configuration and start Nagios 
