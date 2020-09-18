@@ -1,0 +1,10 @@
+Use nohup to run program in the background
+$ nohup sh sample.sh
+
+or Close the terminal witghout terminating background process
+$ sh sample.sh
+$ press ctrl+z
+$ bg
+$ disown
+
+https://askubuntu.com/questions/757336/close-the-terminal-without-terminating-the-process
