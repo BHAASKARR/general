@@ -14,14 +14,14 @@
 	$ wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.4.6.tar.gz
 	$ wget http://www.nagios-plugins.org/download/nagios-plugins-2.3.3.tar.gz
 	
-2. Not able to access UI page:
+1a. Not able to access UI page:
 	$ systemctl enable nagios
 	$ systemctl enable httpd
 	$ firewall-cmd --zone=public --add-port=80/tcp --permanent 
 	$ firewall-cmd --reload 
 	Able to sign to Nagios web page
 	
-3. Internal server error upon login to web page
+1b. Internal server error upon login to web page
 	Internal Server Error
 	The server encountered an internal error or misconfiguration and was unable to complete your request.
 	Please contact the server administrator at root@localhost to inform them of the time this error occurred, and 
@@ -45,8 +45,11 @@
 		[root@onprem nagios-plugins-2.3.3]# ls -la /usr/local/nagios/etc/htpasswd.users
 		-rw----r--. 1 root root 46 Sep 15 18:44 /usr/local/nagios/etc/htpasswd.users
 
-
- 4. upgrade/backup Nagios core:
+ 1c. Install check_ncpa plugin
+ 	https://raw.githubusercontent.com/NagiosEnterprises/ncpa/master/client/check_ncpa.py
+	copy above code with 755 permissions to /usr/local/nagios/libexec
+	
+ 2. upgrade/backup Nagios core:
  	https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/toc.html
 	1. Stop Nagios
 	2. Backup your existing Nagios installation
