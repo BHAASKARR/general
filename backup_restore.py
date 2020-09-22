@@ -1,27 +1,3 @@
-I've finished the backup script, it can now do the following:
-- incremental backups.
-- automatically deletes out of date backups
-- easily restores the system based off the most recent backup
-
-(Obviously there is probably a lot more that could be done, but those
-were my intentions when I started writing and I have now accomplished
-them so this is done, at least for now.)
-
-Here is how to do it...
-
-WARNING:testers beware!
-The script needs 4 variables to be adjusted: OFFSET, BKDIR, EXCLUDE and TARGET
-These are located in weekly.config
-You must adjust weekly_config.py so that it knows where to look for weekly.config
-
-OFFSET is the time to keep old backups before deleting them (default:4weeks).
-BKDIR is where you wish to store your backups.
-EXCLUDE is a list of files you do not wish to have backed up.
-TARGET is the directory you wish to have archived.
-
-1. Copy weekly_backup.py
-2. Copy weekly.conf
-3. Make a backup directory: mkdir /backup
 
 ############################################################ weekly_backup.py ##################################
 
@@ -47,7 +23,9 @@ WEEKLY_CONFIG = "/opt/nagios_automation/weekly.config"
 
 
 usage = "%prog -R | -D"
-mydescription = "weekly_backup.py is intended to be a simple yet powerful backup tool. To backup your system edit this script so that the WEEKLY_CONFIG variable points to the weekly.config file then edit the weekly.conf file so that it has all the correct information, afterwards set weekly_backup.py to run automatically every week with cron or crontab without any command-line options."
+mydescription = "weekly_backup.py is intended to be a simple yet powerful backup tool. To backup your system edit \
+this script so that the WEEKLY_CONFIG variable points to the weekly.config file then edit the weekly.conf file so that \
+it has all the correct information, afterwards set weekly_backup.py to run automatically every week with cron or crontab without any command-line options."
 myversion = "Weekly_Backup-0.03"
 
 def make_new_backup(config_dict,image):
@@ -170,7 +148,7 @@ if __name__ == '__main__':
     main()
     
     
-  ############################################################### weekly.config  ###############################################################################
+  ############################################################### weekly.config  ####################################################
   
    
   {
@@ -191,3 +169,34 @@ if __name__ == '__main__':
 #work its way up the tree.
 'target': '/usr/local/nagios/etc/objects/import'
 }
+    
+############################################################### ##############################################################
+
+    https://ubuntuforums.org/archive/index.php/t-104234.html
+    
+
+I've finished the backup script, it can now do the following:
+- incremental backups.
+- automatically deletes out of date backups
+- easily restores the system based off the most recent backup
+
+(Obviously there is probably a lot more that could be done, but those
+were my intentions when I started writing and I have now accomplished
+them so this is done, at least for now.)
+
+Here is how to do it...
+
+WARNING:testers beware!
+The script needs 4 variables to be adjusted: OFFSET, BKDIR, EXCLUDE and TARGET
+These are located in weekly.config
+You must adjust weekly_config.py so that it knows where to look for weekly.config
+
+OFFSET is the time to keep old backups before deleting them (default:4weeks).
+BKDIR is where you wish to store your backups.
+EXCLUDE is a list of files you do not wish to have backed up.
+TARGET is the directory you wish to have archived.
+
+1. Copy weekly_backup.py
+2. Copy weekly.conf
+3. Make a backup directory: mkdir /backup
+
