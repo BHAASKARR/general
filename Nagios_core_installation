@@ -71,4 +71,5 @@
 	## enter password and confirm password (creation/updating passwords)
 	https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/cgiauth.html
 	https://serverfault.com/questions/111030/how-to-allow-a-user-in-nagios-to-view-the-status-of-some-servers-but-not-disabl
+     Note: Add individual users instead of group in cgi.cfg
 	
