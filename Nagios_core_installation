@@ -65,3 +65,10 @@
 	4. Install Nagios from source by following the quickstart guide
 	5. Restore your original Nagios configuration files, retention file, and log files
 	6. Verify your configuration and start Nagios 
+	
+3. create users for Nagios core web page:
+	[root@puremgr ~]# htpasswd /usr/local/nagios/etc/htpasswd.users joe_user
+	## enter password and confirm password (creation/updating passwords)
+	https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/cgiauth.html
+	https://serverfault.com/questions/111030/how-to-allow-a-user-in-nagios-to-view-the-status-of-some-servers-but-not-disabl
+	
