@@ -77,3 +77,7 @@
 	https://serverfault.com/questions/111030/how-to-allow-a-user-in-nagios-to-view-the-status-of-some-servers-but-not-disabl
      Note: Add individual users instead of group in cgi.cfg
 	
+4. Verify Nagios config:
+	$ /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
+	$ service nagios restart
+
