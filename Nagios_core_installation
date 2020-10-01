@@ -49,6 +49,10 @@
  	https://raw.githubusercontent.com/NagiosEnterprises/ncpa/master/client/check_ncpa.py
 	copy above code with 755 permissions to /usr/local/nagios/libexec
 	
+1d. [root@henagioscore01 logs]# firewall-cmd --reload
+	FirewallD is not running
+	Solution: service firewalld restart or systemctl restart firewalld
+
  2. upgrade/backup Nagios core:
  	https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/toc.html
 	1. Stop Nagios
