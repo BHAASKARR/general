@@ -5,3 +5,28 @@ https://www.liquidweb.com/kb/how-to-setup-a-python-virtual-environment-on-window
 
 serverless framework in local:
   https://newrelic.com/blog/best-practices/create-a-serverless-function-in-python
+
+  Configuring Serverless framework to Validation Account:
+
+  Prerequisites: 
+      1. gimme-aws-creds installed and set up completed
+         if not follow
+         https://wiki.mynmg.com/pages/viewpage.action?spaceKey=CLOUDCOE&title=AWS-CLI+using+OKta+-+gimme-aws-creds
+      2. serverless framework installed
+          if not follow 
+          https://www.serverless.com/framework/docs/providers/aws/guide/installation/
+
+
+  # get aws Config using gimme-aws-creds
+  $ gimme-aws-creds --profile nmg-validation
+      #enter windows credentials.
+      #it will auto generate the aws config details in the .aws/credentials file
+
+  # deploying to serverless
+  $ sls deploy --aws-profile arn:aws:iam::841123234308:role/AWS-PE_USER
+
+  Sample Project: 
+  $ mkdir ~/my-serverless-project
+  $ cd ~/my-serverless-project
+  $ sls create -n my-serverless-project -t aws-python3
+  $ sls deploy --aws-profile arn:aws:iam::841123234308:role/AWS-PE_USER
